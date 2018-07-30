@@ -28,7 +28,7 @@ php artisan migrate
 ```
 
 Below is the relational schema of the database:
-![Alt text](images/SCHEMA:morsum.uml)
+![Alt text](images/database%20schema.png)
 
 where a Shelve can have multiple books and albums.
 
