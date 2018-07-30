@@ -1,0 +1,65 @@
+php artisan serve
+
+php artisan make:migration create_books_table --create=books
+$table->string('title');
+$table->string('authors');
+$table->integer('shelves_id')->unsigned();
+
+php artisan make:migration create_albums_table --create=albums
+$table->string('title');
+$table->string('singer');
+$table->integer('shelves_id')->unsigned();
+
+php artisan make:migration create_shelves_table --create=shelves
+$table->enum('type', ['books', 'album'])->default('books');
+
+php artisan make:migration alter_books_table --table=books
+$table->foreign('shelves_id')->references('id')->on('shelves');
+
+php artisan make:migration alter_albums_table --table=albums
+$table->foreign('shelves_id')->references('id')->on('shelves');
+
+php artisan migrate
+
+
+
+--------------------------------------------------------------
+
+
+pho artisan make:Model Books
+php artisan make:Model Albums
+php artisan make:Model Shelves
+
+php artisan make:Controller BooksController
+php artisan make:Controller AlbumsController
+php artisan make:Controller ShelvesController
+
+php artisan make:seeder BooksTableSeeder
+php artisan make:seeder AlbumsTableSeeder
+php artisan make:seeder ShelvesTableSeeder
+
+Artisan::call('db:seed', [
+                '--class' => BooksTableSeeder::class,
+            ]);
+
+php artisan make:resource Albums
+
+php artisan make:migration insert_to_books_table --table=books
+
+
+
+
+    public $table = "books";
+
+    public $fillable = ['title', 'authors'];
+
+
+    public function index(){
+        return response()->json(Books::get(),200);
+    }
+
+    public function store(Request $request){
+        $book = Books::create($request->all());
+
+        return response()->json($book,201);
+    }
