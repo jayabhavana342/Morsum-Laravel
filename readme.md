@@ -2,84 +2,80 @@
 
 ![Alt text](images/Project%20screenshot.png)
 
-### Requirements
-Php
-Composer
-
 #### Database
 
-Database Files:
+Database Files: 
 
-* Migrations: database/migrations
-* Seeds: database/seeds
+* Migrations: database/migrations 
+* Seeds: database/seeds 
 
-Create a MySQL database "morsum".
+Create a MySQL database "morsum". 
 
-Set the database connection attributes in file ".env":
+Set the database connection attributes in file ".env":  
 
-DB_DATABASE= 'database'
-DB_USERNAME= 'user'
-DB_PASSWORD= 'password'
+DB_DATABASE= 'database'  
+DB_USERNAME= 'user'  
+DB_PASSWORD= 'password'  
 
-To migrate the database migartions along with sample data seeder's for each model, run:
+To migrate the database migartions along with sample data seeder's for each model, run:  
 
 ```
 php artisan migrate
 ```
 
-Below is the relational schema of the database:
+Below is the relational schema of the database:  
 ![Alt text](images/database%20schema.png)
 
-where a Shelve can have multiple books and albums.
+where a Shelve can have multiple books and albums.  
 
-#### Models
+#### Models  
 
 Below are the models for the three tables:
 
-Models are stored under:
+Models are stored under:  
 app/
 
 #### Resource Controllers
 
-Resources transform individual models.
-Resource Collections transform collections of models.
+Resources transform individual models.  
+Resource Collections transform collections of models.  
 
-Resource controllers are stored in:
+Resource controllers are stored in:  
 app/Http/Resources/
 
 #### Controllers
 
-Controllers can group related request handling logic into a single class. 
+Controllers can group related request handling logic into a single class.   
 
-Controllers are stored in:
+Controllers are stored in:  
 app/Http/Controllers/API/
 
 #### Views
 
-Views contain HTML served by the application.
+Views contain HTML served by the application.  
 
-Views are stored in:
+Views are stored in:  
 resources/views/
 
 #### Routes
 
 ###### API Routes:
 
-API routes are stored in:
+API routes are stored in:  
 routes/api.php
 
-Web routes are stored in:
+Web routes are stored in:  
 routes/web.php
 
 ### HTTP requests
 
-URI for HTTP requests:
+URI for HTTP requests:  
 
 Books - /api/books
 Albums - /api/albums
 Shelves - /api/shelves
 
-HTTP requests for books:
+HTTP requests for books:  
 
 | HTTP request | Description | URI | Action |
 | --- | --- | --- | --- |
@@ -91,15 +87,19 @@ HTTP requests for books:
 
 ### HTTP responses
 
-200(OK) - Successful
-201(Created) - Created Resource
-400(Bad Request) - Client-side error
-404(Not Found) - URI cannot be mapped to resource
-500(Internal Server Error) - Generic REST API error response
+200(OK) - Successful  
+201(Created) - Created Resource  
+400(Bad Request) - Client-side error  
+404(Not Found) - URI cannot be mapped to resource  
+500(Internal Server Error) - Generic REST API error response  
 
 ### Screenshots
 
-Run the project by:
+Run the project by:  
 ```php artisan serve```
+
+### Requirements
+Php
+Composer
 
 
