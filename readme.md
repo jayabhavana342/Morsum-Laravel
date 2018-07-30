@@ -1,60 +1,105 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+## Morsum-Laravel
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+![Alt text](images/Project%20screenshot.png)
 
-## About Laravel
+### Requirements
+Php
+Composer
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+#### Database
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Database Files:
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
+* Migrations: database/migrations
+* Seeds: database/seeds
 
-## Learning Laravel
+Create a MySQL database "morsum".
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of any modern web application framework, making it a breeze to get started learning the framework.
+Set the database connection attributes in file ".env":
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+DB_DATABASE= 'database'
+DB_USERNAME= 'user'
+DB_PASSWORD= 'password'
 
-## Laravel Sponsors
+To migrate the database migartions along with sample data seeder's for each model, run:
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell):
+```
+php artisan migrate
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
+Below is the relational schema of the database:
+![Alt text](images/SCHEMA:morsum.uml)
 
-## Contributing
+where a Shelve can have multiple books and albums.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+#### Models
 
-## Security Vulnerabilities
+Below are the models for the three tables:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Models are stored under:
+app/
 
-## License
+#### Resource Controllers
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Resources transform individual models.
+Resource Collections transform collections of models.
+
+Resource controllers are stored in:
+app/Http/Resources/
+
+#### Controllers
+
+Controllers can group related request handling logic into a single class. 
+
+Controllers are stored in:
+app/Http/Controllers/API/
+
+#### Views
+
+Views contain HTML served by the application.
+
+Views are stored in:
+resources/views/
+
+#### Routes
+
+###### API Routes:
+
+API routes are stored in:
+routes/api.php
+
+Web routes are stored in:
+routes/web.php
+
+### HTTP requests
+
+URI for HTTP requests:
+
+Books - /api/books
+Albums - /api/albums
+Shelves - /api/shelves
+
+HTTP requests for books:
+
+| HTTP request | Description | URI | Action |
+| --- | --- | --- | --- |
+| POST | The RESTful HTTP Request POST method is equivalent to Create functions and INSERT SQL statement. | /api/books | store |
+| GET | The RESTful HTTP Request GET method is equivalent to the Retrieve functions and Select SQL statement. | /api/books | index |
+| GET | The RESTful HTTP Request GET method is equivalent to the Retrieve functions and Select SQL statement. | /api/books/{book} | show |
+| PUT | The RESTful HTTP Request PUT method is equivalent to Update functions and UPDATE SQL statement. | /api/books/{book} | update |
+| DELETE | The RESTful HTTP Request DELETE method is equivalent to Delete functions and DELETE SQL statement. | /api/books/{book} | destroy |
+
+### HTTP responses
+
+200(OK) - Successful
+201(Created) - Created Resource
+400(Bad Request) - Client-side error
+404(Not Found) - URI cannot be mapped to resource
+500(Internal Server Error) - Generic REST API error response
+
+### Screenshots
+
+Run the project by:
+```php artisan serve```
+
+
