@@ -54,7 +54,10 @@ class ShelvesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $shelve = Books::findOrFail($id);
+        $shelve->update($request->all());
+
+        return $shelve;
     }
 
     /**

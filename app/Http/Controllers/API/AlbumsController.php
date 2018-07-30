@@ -54,7 +54,10 @@ class AlbumsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $album = Albums::findOrFail($id);
+        $album->update($request->all());
+
+        return $album;
     }
 
     /**
