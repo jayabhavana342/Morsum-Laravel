@@ -93,7 +93,19 @@ HTTP requests for books:
 404(Not Found) - URI cannot be mapped to resource  
 500(Internal Server Error) - Generic REST API error response  
 
-### Screenshots
+### Example URL's 
+
+To list all data:  
+http://127.0.0.1:8000/index.php?url=/books  
+http://127.0.0.1:8000/index.php?url=/shelves  
+http://127.0.0.1:8000/index.php?url=/albums  
+
+To list single record:  
+http://127.0.0.1:8000/index.php?url=/books/{id}   
+http://127.0.0.1:8000/index.php?url=/shelves/{id}  
+http://127.0.0.1:8000/index.php?url=/albums/{id}  
+
+### Command
 
 Run the project by:  
 ```php artisan serve```
